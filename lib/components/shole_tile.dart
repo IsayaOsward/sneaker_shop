@@ -43,7 +43,7 @@ class ShoeTile extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),),
                       const SizedBox(height: 10,),
-                      Text("Tsh "+shoe.price, style: const TextStyle(
+                      Text(shoe.price, style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
                       ),)

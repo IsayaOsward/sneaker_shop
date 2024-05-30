@@ -12,21 +12,32 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  //add to cart
-  void addShoeToCart(Shoe shoe)
-  {
-    Provider.of(context,listen: false).addToCart(shoe);
+  // add to cart
+  void addShoeToCart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).AddToCart(shoe);
 
-    //alert
-    showDialog(context: context, builder: (context)=>AlertDialog(
-     title: Text("Successfully Added to Cart"),
-      content: Text("Check your cart"),
-    ));
+    // alert
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Successfully Added to Cart"),
+        content: const Text("Check your cart"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
-      builder: (context, value, child)=>Column(
+      builder: (context, cart, child) => Column(
         children: [
           Container(
             padding: const EdgeInsets.all(15),
@@ -35,52 +46,61 @@ class _ShopPageState extends State<ShopPage> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Row
-              (
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Search", style: TextStyle(color: Colors.grey),),
+                Text("Search", style: TextStyle(color: Colors.grey)),
                 Icon(Icons.search),
               ],
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 25),
-            child: Text("Everyone flies...but others fly longer than others"),
+            child: Text("Get your brand new car with Us Today"),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Hot Picks 🔥",style: TextStyle(
+                Text(
+                  "Unyama 🔥",
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 24
-                ),),
-                Text("See all",style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                Text(
+                  "See all",
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Colors.blue
-                ),),
+                    color: Colors.blue,
+                  ),
+                ),
               ],
             ),
           ),
-          const SizedBox(height: 20,),
-          Expanded(child: ListView.builder(
-              itemCount: value.getshoeList().length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index){
-                Shoe _shoe= value.getshoeList()[index];
+          const SizedBox(height: 20),
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.getshoeList().length,
+              // scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                Shoe shoe = cart.getshoeList()[index];
                 return ShoeTile(
-                  shoe: _shoe,
-                  onTap: ()=>addShoeToCart(_shoe),
+                  shoe: shoe,
+                  onTap: () => addShoeToCart(shoe),
                 );
-              })),
-          Padding(padding: EdgeInsets.only(top: 25.0, left: 25, right: 25),
-            child:
-            Divider(
+              },
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 25.0, left: 25, right: 25),
+            child: Divider(
               color: Colors.white,
-            ),)
+            ),
+          ),
         ],
       ),
     );

@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             Column(
               children: [
                 DrawerHeader(child:
-                Image.asset("lib/images/hanger.png",color: Colors.white,),),
+                Image.asset("lib/images/car.png",color: Colors.white,),),
                 Divider(
                   color: Colors.grey.shade800,
                 ),

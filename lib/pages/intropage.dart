@@ -14,10 +14,10 @@ class IntroPage extends StatelessWidget {
         children: [
           //logo
           Padding(padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 50),
-          child: Image.asset("lib/images/hanger.png")),
+          child: Image.asset("lib/images/car.png")),
 
           //title
-          Text("E-Pambakali",
+          Text("Klopp-Tigger",
           style: GoogleFonts.pacifico(
             textStyle: const TextStyle(
               fontSize: 50,
@@ -26,7 +26,7 @@ class IntroPage extends StatelessWidget {
 
           //subtitle
           const SizedBox(height: 30,),
-          Text("A Brand New Collection of All Your Favourite Clothes in the World. i.e Shirts, Jeans, Hats, Shoes",
+          Text("A Place Where You Can Find Your Dream Car In the Word",
             textAlign: TextAlign.center,
             style: GoogleFonts.roboto(
             textStyle: const TextStyle(
@@ -44,7 +44,7 @@ class IntroPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.black,
               ),
-              child: Text('Start Shopping Now',
+              child: Text('Go Show Room Now',
               style: GoogleFonts.roboto(
                 textStyle: const TextStyle(
                   color: Colors.white,
